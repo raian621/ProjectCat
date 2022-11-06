@@ -1,26 +1,26 @@
-const { ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
+import { ActionRowBuilder, ModalActionRowComponentBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } from 'discord.js';
 
-const genInputModal = ( customId, modalTitle, titleLabel, descriptionLabel ) => {
+const genInputModal = ( customId: string, modalTitle: string, titleLabel: string, descriptionLabel: string ) => {
   return new ModalBuilder()
   .setCustomId(customId)
   .setTitle(modalTitle)
   .addComponents(
-    new ActionRowBuilder()
+    new ActionRowBuilder<ModalActionRowComponentBuilder>()
       .addComponents(
         new TextInputBuilder()
           .setCustomId('inputModalTitle')
           .setLabel(titleLabel)
           .setStyle(TextInputStyle.Short)
       ),
-    new ActionRowBuilder()
+    new ActionRowBuilder<ModalActionRowComponentBuilder>()
         .addComponents(
-          new TextInputBuilder('inputModalDate')
+          new TextInputBuilder()
             .setCustomId('inputModalDate')
             .setLabel('Due Date (MM/DD/YYY):')
             .setStyle(TextInputStyle.Short)
             .setRequired(false)
         ),
-    new ActionRowBuilder()
+    new ActionRowBuilder<ModalActionRowComponentBuilder>()
       .addComponents(
         new TextInputBuilder()
           .setCustomId('inputModalDescription')
@@ -31,4 +31,4 @@ const genInputModal = ( customId, modalTitle, titleLabel, descriptionLabel ) => 
   );
 }
 
-module.exports = genInputModal;
+export default genInputModal;
