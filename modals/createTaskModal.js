@@ -17,6 +17,5 @@ module.exports = new ModalBuilder()
           .setCustomId('createTaskDescription')
           .setLabel('Task Description:')
           .setStyle(TextInputStyle.Paragraph)
-          .setRequired(false)
       ),  
   );
