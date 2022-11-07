@@ -25,20 +25,18 @@ client.on('interactionCreate', async interaction => {
 
   if (interaction.isModalSubmit()) {
     console.log(interaction);
-    var response: string;
+    
     switch(interaction.customId)
     {
       case "createProjectModal":
-        response = `your project submission was received successfully!\n`;		
+        await commandModules.create_project.handleInput(interaction);
+        break;
       case "createStageModal":
-        response = `your stage submission was received successfully!\n`;
+        await commandModules.create_task.handleInput(interaction);
+        break;
       case "createTaskModal":
-        response = `your task submission was received successfully!\n`;
-        response += `**Title**: ${interaction.fields.getTextInputValue('inputModalTitle')}\n` +
-        `**Due Date**: ${interaction.fields.getTextInputValue('inputModalDate')}\n` +
-        `**Description**: ${interaction.fields.getTextInputValue('inputModalDescription')}`;
-      await interaction.reply({content: response});
-      break;
+        await commandModules.create_task.handleInput(interaction);
+        break;
     }
   }
 })

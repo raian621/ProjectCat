@@ -1,5 +1,4 @@
 import { CommandInteraction, ModalSubmitInteraction, SlashCommandBuilder } from 'discord.js';
-import interactionCreate from '../../build/events/interactionCreate';
 import modal from '../modals/createProjectModal';
 
 export const data = new SlashCommandBuilder()
@@ -16,8 +15,5 @@ export async function handleInput(interaction: ModalSubmitInteraction) {
     `**Due Date**: ${interaction.fields.getTextInputValue('inputModalDate')}\n` +
     `**Description**: ${interaction.fields.getTextInputValue('inputModalDescription')}`;
   
-  await interaction.reply({
-    ephemeral: true,
-    content: response,
-  });
+  await interaction.reply(response);
 }

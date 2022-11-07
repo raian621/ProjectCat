@@ -9,7 +9,7 @@ type Command = {
 
 const commands = [];
 
-for (const module of Object.values<any>(commandModules)) {
+for (const module of Object.values<Command>(commandModules)) {
 	commands.push(module.data);
 }
 

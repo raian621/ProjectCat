@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Group project manager bot for discord",
   "main": "index.js",
+  "module": "ES2022",
   "scripts": {
     "watch": "tsc -w",
     "build": "tsc",
@@ -14,12 +15,20 @@
   "license": "ISC",
   "dependencies": {
     "@mikro-orm/core": "^5.5.1",
-    "@mikro-orm/sqlite": "^5.5.1",
+    "@mikro-orm/migrations": "^5.5.1",
+    "@mikro-orm/postgresql": "^5.5.1",
     "discord.js": "^14.6.0",
     "dotenv": "^16.0.3",
     "nodemon": "^2.0.20"
   },
   "devDependencies": {
     "typescript": "^4.8.4"
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./src/mikro-orm.config.ts",
+      "./build/mikro-orm.config.js"
+    ]
   }
 }

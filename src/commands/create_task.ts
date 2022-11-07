@@ -16,8 +16,5 @@ export async function handleInput(interaction: ModalSubmitInteraction) {
     `**Due Date**: ${interaction.fields.getTextInputValue('inputModalDate')}\n` +
     `**Description**: ${interaction.fields.getTextInputValue('inputModalDescription')}`;
   
-  await interaction.reply({
-    ephemeral: true,
-    content: response,
-  });
+  await interaction.reply(response);
 }
